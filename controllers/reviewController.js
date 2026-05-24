@@ -54,51 +54,34 @@ exports.createReview = async (req, res) => {
                 review,
                 rating,
             });
-
         res.status(201).json({
             success: true,
             message:
                 "Review Added Successfully",
             review: newReview,
         });
-
     } catch (error) {
-
         res.status(500).json({
             success: false,
             message: error.message,
         });
-
     }
 };
-
-
-// ===============================
-// Get Reviews By Product
-// ===============================
 exports.getProductReviews = async (req, res) => {
-
     try {
-
         const reviews =
             await Review.find({
-
                 productId: req.params.productId,
-
             }).sort({ createdAt: -1 });
-
         res.status(200).json({
             success: true,
             reviews,
         });
-
     } catch (error) {
-
         res.status(500).json({
             success: false,
             message: error.message,
         });
-
     }
 };
 
